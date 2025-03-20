@@ -9,8 +9,322 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
-
 .page {
-  min-inline-size: 320px;
-  min-block-size: 100dvb;
+  font-family: var(--main-font), sans-serif;
+  font-variation-settings: "wght" 400;
+  background-size: cover;
+  background-image: var(--background-gradient);
+  background-attachment: fixed;
+}
+
+.header {
+  padding-inline-start: var(--clamp-header-x);
+  padding-inline-end: var(--clamp-header-x);
+  padding-block-start: var(--clamp-header-y);
+  padding-block-end: var(--clamp-header-y);
+  font-family: var(--accent-font), fantasy;
+}
+
+.header__border {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+  text-transform: uppercase;
+  border: 2px solid var(--color-black, rgb(0 0 0));
+  padding-block-start: var(--clamp-border-y-700);
+  padding-block-end: var(--clamp-border-y-700);
+  width: var(--clamp-width);
+  background-color: var(--color-white);
+}
+
+.header__title {
+  font-size: var(--clamp-title);
+}
+
+.header__subtitle {
+  font-size: var(--clamp-subtitle);
+  display: flex;
+  justify-content: center;
+}
+
+.content__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 50px;
+}
+
+.content__item {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.card__content {
+  border: 2px solid var(--color-black, rgb(0 0 0));
+  width: var(--clamp-width);
+  background-color: var(--color-white);
+}
+
+.card__text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 27px;
+  line-height: 21px;
+  padding: 24px;
+  font-size: 18px;
+}
+
+.card__title {
+  border: 2px solid var(--color-black, rgb(0 0 0));
+  padding: 3px 10px 4px 10px;
+  font-size: 18px;
+  width: var(--clamp-width);
+  font-variation-settings: "wght" 700;
+  background-color: var(--color-white);
+}
+
+.card__wrapper {
+  position: relative;
+  height: var(--clamp-height);
+  width: var(--clamp-width);
+}
+
+.card__label {
+  position: absolute;
+  opacity: 0.5;
+  top: 25px;
+  right: 27px;
+  font-family: var(--accent-font), fantasy;
+  font-size: 14px;
+  line-height: 14px;
+  mix-blend-mode: hard-light;
+  text-shadow: 1px 1px var(--color-white, rgb(255 255 255));
+  z-index: 1;
+}
+
+@supports (
+  (text-stroke: 1px rgb(255 255 255)) or (-webkit-text-stroke: 1px rgb(255 255 255))) {
+  .card__label {
+    -webkit-text-stroke: 1px var(--color-white, rgb(255 255 255));
+    text-stroke: 1px var(--color-white, rgb(255 255 255));
+    text-shadow: none;
+  }
+}
+
+.card__subtitle {
+  width: var(--clamp-card-subtitle);
+}
+
+.card__image {
+  width: var(--clamp-width);
+  object-fit: cover;
+  object-position: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-inline-end: 25px;
+  padding-block-end: 25px;
+  column-gap: 6px;
+}
+
+.button__text {
+  text-align: center;
+  font-family: var(--accent-font), fantasy;
+  font-size: 14px;
+  position: relative;
+  color: var(--color-white, rgb(255 255 255));
+  mix-blend-mode: difference;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 100px;
+}
+
+.dialog__floppy {
+  height: 21px;
+  width: 21px;
+  align-self: center;
+  mix-blend-mode: difference;
+}
+
+.dialog__button {
+  display: flex;
+  width: 339px;
+  height: 55px;
+  padding: 12px;
+  border: 2px solid var(--color-black, rgb(0 0 0));
+  background-color: var(--color-white, rgb(255 255 255));
+  position: relative;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+.dialog__subtitle {
+  font-family: var(--accent-font), fantasy;
+  font-size: 14px;
+  line-height: 12.6px;
+  align-self: center;
+}
+
+.modal[open] {
+  display: flex;
+  min-width: 353px;
+  flex-direction: column;
+  padding-inline-start: 30px;
+  padding-inline-end: 30px;
+  padding-block-start: 30px;
+  padding-block-end: 30px;
+  border: 0;
+}
+
+.modal[open]::backdrop {
+  background-color: rgb(0 0 0 / 75%);
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+.modal__content {
+  display: flex;
+  align-items: center;
+  padding-bottom: 30px;
+  width: 293px;
+  column-gap: 20px;
+}
+
+.modal__floppy {
+  height: 39px;
+  width: 39px;
+}
+
+.modal__subtitle {
+  font-family: var(--accent-font), fantasy;
+  font-size: 14px;
+  line-height: 21px;
+  width: 234px;
+  text-transform: uppercase;
+}
+
+.modal__button {
+  text-transform: uppercase;
+  background-color: rgb(211 211 211 / 0);
+  width: 293px;
+  height: 38px;
+  font-family: var(--accent-font), fantasy;
+  border: 2px solid var(--color-black, rgb(0 0 0));
+  cursor: pointer;
+}
+
+.like-icon {
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin: 0 auto;
+}
+
+.filter-invert {
+  filter: invert(25%);
+}
+
+.filter-grayscale {
+  filter: grayscale(50%);
+}
+
+.filter-saturate {
+  filter: saturate(0.7);
+}
+
+.filter-hue {
+  filter: hue-rotate(156deg);
+}
+
+.filter-brigthness {
+  filter: brightness(60%);
+}
+
+.filter-blur {
+  filter: blur(4px);
+}
+
+.filter-contrast-hue {
+  filter: contrast(50%) hue-rotate(200deg);
+}
+
+.filter-sepia {
+  filter: sepia(40%);
+}
+
+@media (width >= 1440px) {
+  .header {
+    display: flex;
+    justify-content: center;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+  }
+}
+
+@media (width <= 375px) {
+  .header__border {
+    padding-inline-start: var(--clamp-border-x-375);
+    padding-inline-end: var(--clamp-border-x-375);
+    padding-block-start: var(--clamp-border-y-375);
+    padding-block-end: var(--clamp-border-y-375);
+  }
+
+  .card__label {
+    top: 23px;
+    right: 14px;
+  }
+  
+  .dialog {
+    width: 375px;
+  }
+  
+  .dialog__floppy {
+    width: 28px;
+    height: 28px;
+  }
+
+  .dialog__button {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 310px;
+    height: 84px;
+    padding: 8px;
+  }
+
+  .modal[open] {
+    min-width: 341px;
+    padding-inline-start: 42px;
+    padding-inline-end: 42px;
+  }
+  
+  .modal__subtitle {
+    width: 198px;
+  }
+
+  .modal__button {
+    width: 257px;
+    align-self: center;
+  }
+
+  .modal__content {
+    width: 257px;
+  }
 }
