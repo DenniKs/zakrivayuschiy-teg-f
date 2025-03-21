@@ -63,10 +63,14 @@
   margin: 0 auto;
 }
 
-.card__content {
+.card {
   border: 2px solid var(--color-black, rgb(0 0 0));
+}
+
+.card__content {
   width: var(--clamp-width);
   background-color: var(--color-white);
+  border-top: 2px solid var(--color-black, rgb(0 0 0));
 }
 
 .card__text {
@@ -79,7 +83,7 @@
 }
 
 .card__title {
-  border: 2px solid var(--color-black, rgb(0 0 0));
+  border-bottom: 2px solid var(--color-black, rgb(0 0 0));
   padding: 3px 10px 4px 10px;
   font-size: 18px;
   width: var(--clamp-width);
@@ -101,7 +105,7 @@
   font-family: var(--accent-font), fantasy;
   font-size: 14px;
   line-height: 14px;
-  mix-blend-mode: hard-light;
+  mix-blend-mode: difference;
   text-shadow: 1px 1px var(--color-white, rgb(255 255 255));
   z-index: 1;
 }
@@ -188,7 +192,7 @@
   padding-inline-end: 30px;
   padding-block-start: 30px;
   padding-block-end: 30px;
-  border: 0;
+  border: 2px solid var(--color-black, rgb(0 0 0));
 }
 
 .modal[open]::backdrop {
@@ -221,6 +225,8 @@ body:has(dialog[open]) {
 }
 
 .modal__button {
+  position: relative;
+  overflow: hidden;
   text-transform: uppercase;
   background-color: rgb(211 211 211 / 0);
   width: 293px;
@@ -237,36 +243,32 @@ body:has(dialog[open]) {
   margin: 0 auto;
 }
 
-.filter-invert {
-  filter: invert(25%);
-}
-
 .filter-grayscale {
-  filter: grayscale(50%);
+  filter: grayscale(80%);
 }
 
 .filter-saturate {
-  filter: saturate(0.7);
+  filter: saturate(300%);
 }
 
 .filter-hue {
-  filter: hue-rotate(156deg);
+  filter: hue-rotate(35deg);
 }
 
-.filter-brigthness {
-  filter: brightness(60%);
+.filter-invert {
+  filter: brightness(85%) saturate(108%) contrast(70%) invert(100%)
 }
 
 .filter-blur {
-  filter: blur(4px);
+  filter: blur(20px);
 }
 
 .filter-contrast-hue {
-  filter: contrast(50%) hue-rotate(200deg);
+  filter: blur(2px) hue-rotate(100deg) saturate(190%) contrast(35%)
 }
 
 .filter-sepia {
-  filter: sepia(40%);
+  filter: sepia(90%) contrast(100%);
 }
 
 @media (width >= 1440px) {
