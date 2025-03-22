@@ -168,10 +168,41 @@
   transform: scaleX(0);
   background-color: var(--color-black, rgb(0 0 0));
   transform-origin: left center;
-  transition: 0.5s ease-in-out;
 }
 
-.button:hover::before {
-  content: "";
-  transform: scaleX(1);
+/* для desktop версии все работает как указано в техническом задании */
+
+@media (pointer: fine) {
+  .button::before {
+    transition: 0.5s ease-in-out;
+  }
+
+  .button:hover::before {
+    content: "";
+    transform: scaleX(1);
+  }
+}
+
+/* факультатив, на mobile hover отсутствует, попробовал его сделать более наглядным,
+фокус как снимать после нажатия незнаю, только js делать,
+поэтому после первого нажатия на второе нажатие, без снятия фокуса, анимация работать не будет */
+
+@media (pointer: coarse) {
+  @keyframes scaleXAnimation {
+    from {
+      transform: scaleX(0);
+    }
+
+    50% {
+      transform: scaleX(1);
+    }
+
+    to {
+      transform: scaleX(0);
+    }
+  }
+
+  .button:hover::before {
+    animation: scaleXAnimation 2s ease-in-out;
+  }
 }
